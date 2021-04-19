@@ -3,12 +3,22 @@ version: 2.1
 workflows:
   workflow:
     jobs:
-      - job
+      - medium
+      - large
 
 jobs:
-  job:
-    machine: true
-    resource_class: pete-woods/test
+  medium:
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: arm.medium
     steps:
-      - run: echo hello runner
-      - run: pwd
+      - run: echo 'hello arm medium'
+      - run: uname -a
+
+  large:
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: arm.large
+    steps:
+      - run: echo 'hello arm large'
+      - run: uname -a
