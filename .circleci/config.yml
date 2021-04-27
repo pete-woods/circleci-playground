@@ -7,8 +7,9 @@ workflows:
 
 jobs:
   job:
-    machine: true
-    resource_class: pete-woods/test
+    docker:
+    - image: cimg/base:stable
     steps:
-      - run: echo hello runner
-      - run: pwd
+      - run: echo foo > /tmp/file.txt
+      - store_artifacts:
+          path: /tmp/file.txt
