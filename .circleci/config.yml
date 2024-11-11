@@ -15,6 +15,7 @@ jobs:
     executor: default
     steps:
       - run:
-         command: mkdir /mnt/ramdisk && sudo mount -t tmpfs tmpfs /mnt/ramdisk -o rw,nodev,suid,exec,size=10G
+         command: 'sudo mkdir /mnt/ramdisk && sudo chown circleci: /mnt/ramdisk && sudo mount -t tmpfs tmpfs /mnt/ramdisk -o rw,nodev,suid,exec,size=10G'
          working_directory: /home/circleci
+      - checkout
 
