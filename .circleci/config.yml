@@ -3,10 +3,18 @@ version: 2.1
 workflows:
   workflow:
     jobs:
-      - job
+      - job:
+          working_directory: "/mnt/ramdisk"
+
+executors:
+  default:
+    machine: true
 
 jobs:
   job:
-    machine: true
+    parameters:
+      working_directory:
+        type: "string"
+    executor: default
     steps:
       - run: sudo mkdir /mnt/ramdisk
