@@ -3,8 +3,7 @@ version: 2.1
 workflows:
   workflow:
     jobs:
-      - job:
-          working_directory: "/mnt/ramdisk"
+      - job
 
 executors:
   default:
@@ -13,12 +12,9 @@ executors:
 
 jobs:
   job:
-    parameters:
-      working_directory:
-        type: "string"
     executor: default
     steps:
       - run:
-         command: sudo mkdir /mnt/ramdisk
+         command: mkdir /mnt/ramdisk && sudo mount -t tmpfs tmpfs /mnt/ramdisk -o rw,nodev,suid,exec,size=10G
          working_directory: /home/circleci
 
