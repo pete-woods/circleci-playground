@@ -17,5 +17,5 @@ jobs:
       - run:
          command: 'sudo mkdir /mnt/ramdisk && sudo chown circleci: /mnt/ramdisk && sudo mount -t tmpfs tmpfs /mnt/ramdisk -o rw,nodev,suid,exec,size=10G'
          working_directory: /home/circleci
-      - checkout
+      - run: ls -lR /mnt
 
