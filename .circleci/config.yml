@@ -9,6 +9,7 @@ workflows:
 executors:
   default:
     machine: true
+    working_directory: "/mnt/ramdisk"
 
 jobs:
   job:
